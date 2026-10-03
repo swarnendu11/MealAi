@@ -1,7 +1,5 @@
-'use client';
-
 import React, { createContext, useContext, useEffect, useState, useCallback, useMemo } from 'react';
-import { useUser, useAuth as useClerkAuth, useClerk } from '@clerk/nextjs';
+import { useUser, useAuth as useClerkAuth, useClerk } from '@clerk/clerk-react';
 import { AuthUser, ConfirmationResult } from '../lib/auth.ts';
 import { getUserProfile, saveUserProfile } from '../lib/db.ts';
 import { UserProfile } from '../types/index.ts';
@@ -44,7 +42,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   // Check if Clerk environment has been configured
   const isClerkConfigured = useMemo(() => {
-    const pubKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
+    const pubKey =
+      (import.meta.env.VITE_CLERK_PUBLISHABLE_KEY as string | undefined) ||
+      (typeof process !== 'undefined' ? (process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY as string | undefined) : '');
     return Boolean(pubKey && !pubKey.includes('placeholder') && !pubKey.includes('example.clerk'));
   }, []);
 
@@ -224,7 +224,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
    */
   const signInWithGoogle = async () => {
     if (!isClerkConfigured) {
-      throw new Error('Clerk is not configured. Please set NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY in .env.local');
+      throw new Error('Clerk is not configured. Please set VITE_CLERK_PUBLISHABLE_KEY in .env.local');
     }
 
     if (clerk.client?.signIn?.authenticateWithRedirect) {
@@ -252,7 +252,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
    */
   const signInWithEmail = async (email: string, pass: string) => {
     if (!isClerkConfigured) {
-      throw new Error('Clerk is not configured. Please set NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY in .env.local');
+      throw new Error('Clerk is not configured. Please set VITE_CLERK_PUBLISHABLE_KEY in .env.local');
     }
     if (!clerk.client?.signIn) {
       throw new Error('Authentication service is initializing. Please try again.');
@@ -277,7 +277,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
    */
   const signUpWithEmail = async (email: string, pass: string, name: string) => {
     if (!isClerkConfigured) {
-      throw new Error('Clerk is not configured. Please set NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY in .env.local');
+      throw new Error('Clerk is not configured. Please set VITE_CLERK_PUBLISHABLE_KEY in .env.local');
     }
     if (!clerk.client?.signUp) {
       throw new Error('Registration service is initializing. Please try again.');
@@ -315,7 +315,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
    */
   const sendPasswordReset = async (email: string) => {
     if (!isClerkConfigured) {
-      throw new Error('Clerk is not configured. Please set NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY in .env.local');
+      throw new Error('Clerk is not configured. Please set VITE_CLERK_PUBLISHABLE_KEY in .env.local');
     }
     if (!clerk.client?.signIn) {
       throw new Error('Password reset service is initializing. Please try again.');
@@ -333,7 +333,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
    */
   const sendPhoneCode = async (phoneNumber: string, _containerId?: string): Promise<ConfirmationResult> => {
     if (!isClerkConfigured) {
-      throw new Error('Clerk is not configured. Please set NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY in .env.local');
+      throw new Error('Clerk is not configured. Please set VITE_CLERK_PUBLISHABLE_KEY in .env.local');
     }
     if (!clerk.client) {
       throw new Error('Phone authentication service is initializing. Please try again.');

@@ -4,6 +4,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
+import { ClerkProvider, AuthenticateWithRedirectCallback } from '@clerk/clerk-react';
 import { AuthProvider, useAuth } from './context/AuthContext.tsx';
 import { MealProvider, useMeal } from './context/MealContext.tsx';
 import { Navbar } from './components/Navbar.tsx';
@@ -287,12 +288,43 @@ function MainApp() {
   );
 }
 
+const CLERK_PUBLISHABLE_KEY =
+  (import.meta.env.VITE_CLERK_PUBLISHABLE_KEY as string | undefined) ||
+  (typeof process !== 'undefined' ? (process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY as string | undefined) : '');
+
 export default function App() {
+  // Handle Clerk OAuth SSO redirect callback
+  if (typeof window !== 'undefined' && window.location.pathname === '/sso-callback') {
+    return (
+      <ClerkProvider publishableKey={CLERK_PUBLISHABLE_KEY || ''}>
+        <div className="min-h-screen flex items-center justify-center bg-culinary-pattern">
+          <AuthenticateWithRedirectCallback signInForceRedirectUrl="/" signUpForceRedirectUrl="/" />
+        </div>
+      </ClerkProvider>
+    );
+  }
+
+  if (!CLERK_PUBLISHABLE_KEY) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[#F7F4EE] p-6 text-center">
+        <div className="max-w-md p-8 bg-white rounded-2xl shadow-xl border border-[#DCE7DA]">
+          <h2 className="text-xl font-bold text-[#123524] mb-2">Clerk Configuration Required</h2>
+          <p className="text-sm text-[#606862] mb-4">
+            Please configure <code className="bg-gray-100 px-2 py-0.5 rounded text-[#D95F3F] font-mono">VITE_CLERK_PUBLISHABLE_KEY</code> in your environment variables.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <AuthProvider>
-      <MealProvider>
-        <MainApp />
-      </MealProvider>
-    </AuthProvider>
+    <ClerkProvider publishableKey={CLERK_PUBLISHABLE_KEY}>
+      <AuthProvider>
+        <MealProvider>
+          <MainApp />
+        </MealProvider>
+      </AuthProvider>
+    </ClerkProvider>
   );
 }
+

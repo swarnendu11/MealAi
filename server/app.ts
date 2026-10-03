@@ -16,8 +16,9 @@ export function createApp(): Express {
   app.use(requestLogger);
   app.use(rateLimiter(60, 60 * 1000));
 
-  // Mount API router
+  // Mount API router (both /api and / to support direct serverless invocations and rewrites)
   app.use('/api', apiRouter);
+  app.use('/', apiRouter);
 
   // Global error handler for all unhandled route errors
   app.use(errorHandler);

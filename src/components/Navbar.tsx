@@ -6,7 +6,7 @@ import {
   X,
   Plus,
 } from 'lucide-react';
-import { SignInButton, SignUpButton, Show, UserButton } from '@clerk/nextjs';
+import { SignInButton, SignUpButton, SignedIn, SignedOut, UserButton } from '@clerk/clerk-react';
 import { useAuth } from '../context/AuthContext.tsx';
 import { useMeal } from '../context/MealContext.tsx';
 import { MealAILogo } from './MealAILogo.tsx';
@@ -112,7 +112,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             {/* Authentication Controls */}
             <div className="flex items-center gap-2 sm:gap-3">
-              <Show when="signed-out">
+              <SignedOut>
                 <div className="flex items-center gap-1.5 sm:gap-2">
                   <SignInButton mode="modal">
                     <button className="text-xs font-semibold text-[#D2E3D8] hover:text-white px-2.5 sm:px-3 py-1.5 rounded-lg hover:bg-white/10 transition-colors cursor-pointer">
@@ -126,8 +126,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                     </button>
                   </SignUpButton>
                 </div>
-              </Show>
-              <Show when="signed-in">
+              </SignedOut>
+              <SignedIn>
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => setActiveTab('profile')}
@@ -148,7 +148,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     }}
                   />
                 </div>
-              </Show>
+              </SignedIn>
             </div>
 
             {/* Mobile Menu Button */}
@@ -200,7 +200,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             {/* Mobile Auth actions */}
             <div className="pt-3 mt-2 border-t border-[#1E4D37] px-1">
-              <Show when="signed-out">
+              <SignedOut>
                 <div className="grid grid-cols-2 gap-2">
                   <SignInButton mode="modal">
                     <button
@@ -220,8 +220,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                     </button>
                   </SignUpButton>
                 </div>
-              </Show>
-              <Show when="signed-in">
+              </SignedOut>
+              <SignedIn>
                 <div className="flex items-center justify-between p-2.5 rounded-xl border border-[#1E4D37] bg-white/5">
                   <div className="flex items-center gap-3">
                     <UserButton />
@@ -237,7 +237,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     Preferences
                   </button>
                 </div>
-              </Show>
+              </SignedIn>
             </div>
           </div>
         )}
