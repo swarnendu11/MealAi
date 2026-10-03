@@ -1,0 +1,3 @@
+module.exports=[91415,a=>{"use strict";a.s([],29395),a.i(29395);var b=a.i(27607),c=a.i(26022);a.s(["00b6e2f1187de9463215d3d982b8fcc1a04bbcfcf3",()=>b.invalidateCacheAction,"00d164d8102a6f7f87dc5d34696239faa79a07faa6",()=>c.deleteKeylessAction],91415)},27607,a=>{"use strict";var b=a.i(37936),c=a.i(5246);async function d(){(await (0,c.cookies)()).delete(`__clerk_invalidate_cache_cookie_${Date.now()}`)}(0,a.i(13095).ensureServerEntryExports)([d]),(0,b.registerServerReference)(d,"00b6e2f1187de9463215d3d982b8fcc1a04bbcfcf3",null),a.s(["invalidateCacheAction",0,d])}];
+
+//# sourceMappingURL=_0px6dgd._.js.map

@@ -1,0 +1,6 @@
+{
+  "name": "MealAI - AI Meal Planner & Recipe Generator",
+  "description": "Your personal AI chef. Turn what you have into something you'll love.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

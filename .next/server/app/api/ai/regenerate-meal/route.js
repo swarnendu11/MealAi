@@ -1,0 +1,11 @@
+var R=require("../../../../chunks/[turbopack]_runtime.js")("server/app/api/ai/regenerate-meal/route.js")
+R.c("server/chunks/[root-of-the-server]__0xu3gi_._.js")
+R.c("server/chunks/node_modules_next_dist_0asuiw2._.js")
+R.c("server/chunks/[root-of-the-server]__1a56io-._.js")
+R.c("server/chunks/[root-of-the-server]__1r01cl_._.js")
+R.c("server/chunks/_1pj2hhf._.js")
+R.c("server/chunks/[root-of-the-server]__0anywq-._.js")
+R.c("server/chunks/server_services_gemini_service_ts_1tjh3bo._.js")
+R.c("server/chunks/_next-internal_server_app_api_ai_regenerate-meal_route_actions_1kgrwb7.js")
+R.m(91827)
+module.exports=R.m(91827).exports

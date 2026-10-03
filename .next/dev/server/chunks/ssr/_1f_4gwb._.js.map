@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 17, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/swarn/OneDrive/Desktop/MealAi/.next-internal/server/app/page/actions.js%20(server%20actions%20loader)"],"sourcesContent":["export {deleteKeylessAction as '00bfb118794dac61801d5a21c3f14bcd4dbe4585dd'} from 'ACTIONS_MODULE0'\nexport {invalidateCacheAction as '00534325e2f71a5cfde1487d502211f6f4de476d9b'} from 'ACTIONS_MODULE1'\n"],"names":[],"mappings":";AAAA;AACA"}},
+    {"offset": {"line": 26, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/swarn/OneDrive/Desktop/MealAi/node_modules/@clerk/nextjs/dist/esm/app-router/server-actions.js"],"sourcesContent":["\"use server\";\nimport { cookies } from \"next/headers\";\nasync function invalidateCacheAction() {\n  void (await cookies()).delete(`__clerk_invalidate_cache_cookie_${Date.now()}`);\n}\nexport {\n  invalidateCacheAction\n};\n"],"names":["invalidateCacheAction","delete","Date","now"],"mappings":";;;;;AACA;;;;AACA,eAAeA;IACb,KAAK,CAAC,MAAM,IAAA,0IAAO,GAAE,EAAEC,MAAM,CAAC,CAAC,gCAAgC,EAAEC,KAAKC,GAAG,IAAI;AAC/E;;;;IAFeH;;AAAAA,+OAAAA","ignoreList":[0]}}]
+}

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Rounded Tile Container with Deep Forest Green Background -->
+  <rect width="64" height="64" rx="16" fill="#1C3822" />
+  
+  <!-- Subtle inner border for depth -->
+  <rect x="1" y="1" width="62" height="62" rx="15" stroke="#2B4E32" stroke-width="1.5" />
+
+  <!-- Artisan Ceramic Bowl in Warm Ivory -->
+  <path
+    d="M 12 36 C 13.5 48, 22.5 53, 32 53 C 41.5 53, 50.5 48, 52 36 C 52 34.5, 51 33.5, 49.5 33.5 L 14.5 33.5 C 13 33.5, 12 34.5, 12 36 Z"
+    fill="#FAF7F2"
+  />
+
+  <!-- Subtle Bowl Rim Highlight -->
+  <path
+    d="M 14.5 33.5 L 49.5 33.5"
+    stroke="#E8E1D5"
+    stroke-width="1.5"
+    stroke-linecap="round"
+  />
+
+  <!-- Left: Fresh Botanical Herb Leaf (Wholesome Pantry & Ingredients) -->
+  <path
+    d="M 32 32 C 32 23, 21 18, 18 10 C 16.5 18, 22.5 29, 32 32 Z"
+    fill="#4ADE80"
+  />
+
+  <!-- Right: Culinary Flame & Spice Spark (Cooking Heat & Intelligence) -->
+  <path
+    d="M 32 32 C 32 22, 42 19, 44 11 C 45 19, 39 28, 32 32 Z"
+    fill="#F97316"
+  />
+
+  <!-- Center AI Sparkle / Culinary Spark in Golden Saffron -->
+  <path
+    d="M 32 9 L 33.5 14 L 38.5 15.5 L 33.5 17 L 32 22 L 30.5 17 L 25.5 15.5 L 30.5 14 Z"
+    fill="#FBBF24"
+  />
+</svg>
