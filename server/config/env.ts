@@ -1,5 +1,10 @@
 import dotenv from 'dotenv';
-dotenv.config();
+import path from 'path';
+
+// Load .env.local first (if present), then .env as fallback
+dotenv.config({ path: path.resolve(process.cwd(), '.env.local'), quiet: true });
+dotenv.config({ path: path.resolve(process.cwd(), '.env'), quiet: true });
+
 
 export interface ServerConfig {
   port: number;

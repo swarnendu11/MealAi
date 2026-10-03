@@ -44,7 +44,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const isClerkConfigured = useMemo(() => {
     const pubKey =
       (import.meta.env.VITE_CLERK_PUBLISHABLE_KEY as string | undefined) ||
-      (typeof process !== 'undefined' ? (process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY as string | undefined) : '');
+      ((import.meta.env as any).NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY as string | undefined) ||
+      (typeof process !== 'undefined' ? ((process.env.VITE_CLERK_PUBLISHABLE_KEY || process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY) as string | undefined) : '');
     return Boolean(pubKey && !pubKey.includes('placeholder') && !pubKey.includes('example.clerk'));
   }, []);
 

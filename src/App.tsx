@@ -290,7 +290,8 @@ function MainApp() {
 
 const CLERK_PUBLISHABLE_KEY =
   (import.meta.env.VITE_CLERK_PUBLISHABLE_KEY as string | undefined) ||
-  (typeof process !== 'undefined' ? (process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY as string | undefined) : '');
+  ((import.meta.env as any).NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY as string | undefined) ||
+  (typeof process !== 'undefined' ? ((process.env.VITE_CLERK_PUBLISHABLE_KEY || process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY) as string | undefined) : '');
 
 export default function App() {
   // Handle Clerk OAuth SSO redirect callback

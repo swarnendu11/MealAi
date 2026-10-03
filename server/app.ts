@@ -1,4 +1,5 @@
 import express, { Express } from 'express';
+import './config/env.ts';
 import { requestLogger } from './middleware/requestLogger.ts';
 import { rateLimiter } from './middleware/rateLimiter.ts';
 import { errorHandler } from './middleware/errorHandler.ts';
